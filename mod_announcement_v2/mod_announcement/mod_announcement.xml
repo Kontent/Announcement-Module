@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5" client="site" method="update">
+	<name>Announcements</name>
+	<author>JXtended, LLC</author>
+	<creationDate>August 2008</creationDate>
+	<copyright>Copyright (C) 2008 JXtended, LLC. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>info@jxtended.com</authorEmail>
+	<authorUrl>http://jxtended.com</authorUrl>
+	<version>1.0.0</version>
+	<description>This module allows the displaying of a syndicated feed with parameterized layouts</description>
+
+	<files>
+		<filename module="mod_announcement">mod_announcement.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+
+		<folder>elements</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_announcement.ini</language>
+	</languages>
+
+	<administration>
+		<languages folder="language">
+			<language tag="en-GB">en-GB.mod_announcement.ini</language>
+		</languages>
+	</administration>
+
+	<params addpath="/modules/mod_announcement/elements">
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+
+		<param name="num_items" type="text" default="3" label="Number of Items" description="Number of items to show." />
+		<param name="max_words" type="text" default="15" label="Maximum Words" description="Maximum number of words to display for each item." />
+
+		<param name="@spacer" type="spacer" />
+		<param name="show_thumb" type="radio" default="1" label="Show Thumbnails" description="Show thumbnails for items where possible.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="auto_thumbnail" type="radio" default="1" label="Autogenerate Thumbnails" description="Use GD to autogenerate thumbnail images where possible.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	
+		<param name="thumb_align" type="list" default="left" label="Thumbnail Alignment" description="The image alignment for the thumbnail images.">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="thumb_width" type="text" default="100" label="Thumbnail Width" description="Maximum thumbnail width." />
+		<param name="thumb_height" type="text" default="150" label="Thumbnail Height" description="Maximum thumbnail height." />
+
+		<param name="@spacer" type="spacer" />
+		<param name="cat_ids" type="category" multiple="true" size="10" default="" label="Show for Categories" description="Choose which categories for which comments will display." />
+		<param name="jxcomments" type="radio" default="0" label="Integrate with JXComments" description="This will show the number of comments on a given article">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+	</params>
+
+	<params group="advanced">
+		<param name="cache" type="list" default="1" label="Caching"
+			description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900"
+			label="Cache Time"
+			description="The time before the module is recached" />
+	</params>
+</install>
